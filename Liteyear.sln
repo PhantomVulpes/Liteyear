@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Processor", "Processor\Processor.csproj", "{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,18 @@ Global
 		{5C9BDF3D-79A0-46B4-9C94-49EB6FE5E144}.Release|x64.Build.0 = Release|Any CPU
 		{5C9BDF3D-79A0-46B4-9C94-49EB6FE5E144}.Release|x86.ActiveCfg = Release|Any CPU
 		{5C9BDF3D-79A0-46B4-9C94-49EB6FE5E144}.Release|x86.Build.0 = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|x64.Build.0 = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5495CD0-1F66-4AA5-B468-65ABADC5EF7B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
