@@ -1,0 +1,7 @@
+<Project>
+   <PropertyGroup>
+    <AssemblyName>Vulpes.Liteyear.$(MSBuildProjectName)</AssemblyName>
+    <version>0.1.0</version>
+    <RootNamespace>Vulpes.Liteyear.$(MSBuildProjectName)</RootNamespace>
+   </PropertyGroup>
+</Project>
