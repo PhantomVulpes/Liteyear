@@ -1,3 +1,6 @@
+using Vulpes.Liteyear.Domain.Messaging;
+using Vulpes.Liteyear.External.Rabbit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Ensure Kestrel configuration is applied
@@ -15,6 +18,10 @@ builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services
+    .AddSingleton<IRabbitMqConnectionManager, RabbitMqConnectionManager>()
+    .AddTransient<IMessagePublisher, RabbitMqPublisher>()
+    ;
 // builder.Services
 //     .InjectDomain();
 

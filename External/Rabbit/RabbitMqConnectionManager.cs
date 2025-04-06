@@ -39,7 +39,7 @@ public class RabbitMqConnectionManager : IRabbitMqConnectionManager
             UserName = "admin",
             Password = "password",
             Port = 62023,
-            VirtualHost = "liteyear",
+            VirtualHost = "/",
             Ssl = new SslOption
             {
                 Enabled = false,

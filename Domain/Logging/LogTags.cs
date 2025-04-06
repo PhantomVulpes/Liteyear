@@ -10,4 +10,8 @@ public static class LogTags
     public static string EventingShutdown => $"[{nameof(EventingShutdown)}]";
     public static string PublisherStart => $"[{nameof(PublisherStart)}]";
     public static string ConsumerFatal => $"[{nameof(ConsumerFatal)}]";
+    public static string ConsumerStart => $"[{nameof(ConsumerStart)}]";
+
+    public static string MessageSuccess => $"[{nameof(MessageSuccess)}]";
+    public static string MessageFailure => $"[{nameof(MessageFailure)}]";
 }

@@ -40,6 +40,8 @@ public static class ApplicationConfiguration
     }
 
     public static string DatabaseConnectionString => "mongodb://localhost:62001";
+    public static string ExchangeName => $"{ApplicationName.ToLower()}-exchange";
+    public static string DeadLetterExchangeName => $"{ExchangeName}.DLX";
 
     public static string Version => "Alpha 0.5";
 

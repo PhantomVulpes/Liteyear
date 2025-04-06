@@ -13,5 +13,5 @@ public sealed record LiteyearQueue
     public string Identifier { get; init; } = string.Empty;
     public string Name => $"{QueuePrefix}{Identifier.Replace(QueuePrefix, string.Empty)}";
     public string RoutingKey => $"*.*.{Identifier}".ToLower();
-    // public string BuildRoute<TMessage>(TMessage message) where TMessage : LiteyearMessage => $"{message.Key}.{typeof(TMessage).Name}.{Identifier}".ToLower();
+    public string BuildRoute<TMessage>(TMessage message) where TMessage : LiteyearMessage => $"{message.Key}.{typeof(TMessage).Name}.{Identifier}".ToLower();
 }

@@ -11,6 +11,28 @@
         "cwd": "${workspaceFolder}/Api",
         "stopAtEntry": false,
         "console": "internalConsole",
+      },
+      {
+        "name": "Processor",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/Processor/bin/Debug/net9.0/Vulpes.Liteyear.Processor.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/Processor",
+        "stopAtEntry": false,
+        "console": "internalConsole",
+      },
+      {
+        "name": "Console",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/Console/bin/Debug/net9.0/Vulpes.Liteyear.Console.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/Console",
+        "stopAtEntry": false,
+        "console": "internalConsole",
       }
     ]
 }
