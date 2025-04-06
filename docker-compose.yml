@@ -1,0 +1,30 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: liteyear-mongo
+    restart: always
+    hostname: liteyear-mongo
+    command: --oplogSize 128 --bind_ip_all --port 62010
+    volumes:
+      - liteyear-mongo_data:/data/db
+      - liteyear-mongo_configdb:/data/configdb
+    ports:
+      - "62001:62001"
+
+  rabbitmq:
+    image: rabbitmq:3.7.13-management
+    container_name: liteyear-rabbitmq
+    restart: always
+    hostname: liteyear-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    ports: # Second ports are for mapping to the first port. i.e. 15672 is for Rabbit to use, I want it to be mapped to 62021
+      - "62021:15672" # Management UI
+      - "62022:5671" # RabbitMQ SSL port (optional, if you need SSL)
+      - "62023:5672" # RabbitMQ AMQP port
+
+volumes:
+  liteyear-mongo_data:
+  liteyear-mongo_configdb:
+  liteyear-rabbitmq:
