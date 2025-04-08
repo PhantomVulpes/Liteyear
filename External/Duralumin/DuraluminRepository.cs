@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using System.Formats.Asn1;
 using Vulpes.Liteyear.Domain.Configuration;
 using Vulpes.Liteyear.Domain.Logging;
 using Vulpes.Liteyear.Domain.Storage;
@@ -41,25 +40,7 @@ public class DuraluminRepository : IContentRepository
         }
     }
 
-    public async Task<byte[]> GetDocumentAsync(string key)
-    {
-        var client = duraluminClientFactory.BuildClient();
-
-        try
-        {
-            var response = await client.RetrieveAsync(ApplicationConfiguration.DuraluminBucket, key);
-
-            logger.LogInformation($"{LogTags.ContentRetrievalSuccess} Retrieving document with key: {key} from bucket: {ApplicationConfiguration.DuraluminBucket}");
-            return response;
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, $"{LogTags.ContentRetrievalFailure} Failed to retrieve document with key: {key} from bucket: {ApplicationConfiguration.DuraluminBucket}");
-            throw;
-        }
-    }
-
-    public async Task<byte[]> GetExternalDocumentAsync(string bucket, string key)
+    public async Task<byte[]> GetDocumentAsync(string bucket, string key)
     {
         var client = duraluminClientFactory.BuildClient();
 

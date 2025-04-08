@@ -22,7 +22,7 @@ public class PrimaryController : ControllerBase
     {
         // Get the Duralumin bucket and key from the request.
         // Move to Liteyear's bucket.
-        var input = await contentRepository.GetExternalDocumentAsync(request.DuraluminBucket, request.DuraluminKey);
+        var input = await contentRepository.GetDocumentAsync(request.DuraluminBucket, request.DuraluminKey);
         await contentRepository.StoreDocumentAsync(input, "ingest");
 
         return Ok("Received request to execute workflow.");
