@@ -1,6 +1,4 @@
-using Amazon.Runtime.Internal.Util;
 using Microsoft.Extensions.Logging;
-using System;
 using Vulpes.Liteyear.Domain.Messaging;
 
 namespace Vulpes.Liteyear.Processor.Consumers;

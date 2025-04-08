@@ -43,6 +43,20 @@ public static class ApplicationConfiguration
     public static string ExchangeName => $"{ApplicationName.ToLower()}-exchange";
     public static string DeadLetterExchangeName => $"{ExchangeName}.DLX";
 
-    public static string Version => "Alpha 0.5";
+    public static string DuraluminBucket
+    {
+        get
+        {
+#if DEBUG
+            return "liteyear-debug";
+#elif QUAL
+                return "liteyear-qual";
+#elif RELEASE
+                return "LITEYEAR";
+#endif
+        }
+    }
+
+    public static string Version => "Alpha 0.1";
 
 }

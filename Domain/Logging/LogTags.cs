@@ -14,4 +14,9 @@ public static class LogTags
 
     public static string MessageSuccess => $"[{nameof(MessageSuccess)}]";
     public static string MessageFailure => $"[{nameof(MessageFailure)}]";
+
+    public static string ContentStorageSuccess => $"[{nameof(ContentStorageSuccess)}]";
+    public static string ContentStorageFailure => $"[{nameof(ContentStorageFailure)}]";
+    public static string ContentRetrievalSuccess => $"[{nameof(ContentRetrievalSuccess)}]";
+    public static string ContentRetrievalFailure => $"[{nameof(ContentRetrievalFailure)}]";
 }

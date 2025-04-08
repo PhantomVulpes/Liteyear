@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <OpenApiReference Include="./Duralumin/duralumin-client.json" CodeGenerator="NSwagCSharp" Namespace="Vulpes.Liteyear.External.Duralumin" ClassName="DuraluminClient" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Electrum.Storage" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.18.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

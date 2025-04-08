@@ -1,4 +1,7 @@
+using Vulpes.Liteyear.Api.Extensions;
 using Vulpes.Liteyear.Domain.Messaging;
+using Vulpes.Liteyear.Domain.Storage;
+using Vulpes.Liteyear.External.Duralumin;
 using Vulpes.Liteyear.External.Rabbit;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,12 +21,12 @@ builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// TODO: Build extensions.
 builder.Services
+    .AddContentRepository()
     .AddSingleton<IRabbitMqConnectionManager, RabbitMqConnectionManager>()
-    .AddTransient<IMessagePublisher, RabbitMqPublisher>()
+    .AddSingleton<IMessagePublisher, RabbitMqPublisher>()
     ;
-// builder.Services
-//     .InjectDomain();
 
 var app = builder.Build();
 
