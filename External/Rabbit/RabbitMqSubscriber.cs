@@ -67,9 +67,10 @@ public class RabbitMqSubscriber : IMessageSubscriber
                 logger.LogError(ex, $"{LogTags.MessageFailure} Failed to process message from Queue '{queue.Name}': {ex.Message}.");
             }
 
-            await channel.BasicConsumeAsync(queue.Name, false, basicConsumer);
-            logger.LogInformation($"{LogTags.ConsumerStart} Consumer for Queue '{queue.Name}' is ready to receive messages.");
         };
+
+        await channel.BasicConsumeAsync(queue.Name, false, basicConsumer);
+        logger.LogInformation($"{LogTags.ConsumerStart} Consumer for Queue '{queue.Name}' is ready to receive messages.");
     }
 
     private async Task<IChannel> CreateSubscribeChannel()

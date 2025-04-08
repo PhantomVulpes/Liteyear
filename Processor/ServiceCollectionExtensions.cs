@@ -9,7 +9,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddProcessorServices(this IServiceCollection services, string[] namespaces) => services
         .ConfigureEnumerableService<IMessageConsumer>(namespaces)
-        .AddTransient<IRabbitMqConnectionManager, RabbitMqConnectionManager>()
-        .AddTransient<IMessageSubscriber, RabbitMqSubscriber>()
+        .AddSingleton<IRabbitMqConnectionManager, RabbitMqConnectionManager>()
+        .AddSingleton<IMessagePublisher, RabbitMqPublisher>()
+        .AddSingleton<IMessageSubscriber, RabbitMqSubscriber>()
         ;
 }

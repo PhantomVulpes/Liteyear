@@ -1,5 +1,4 @@
 using RabbitMQ.Client;
-using System.Threading.Tasks;
 using Vulpes.Liteyear.Domain.Configuration;
 using Vulpes.Liteyear.Domain.Messaging;
 
