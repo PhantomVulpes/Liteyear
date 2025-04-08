@@ -16,14 +16,15 @@ public class DuraluminRepository : IContentRepository
         this.logger = logger;
     }
 
-    public async Task StoreDocumentAsync(byte[] content, string key)
+    public async Task<string> StoreDocumentAsync(byte[] content, Guid executionFlowKey, string storageEvent)
     {
         var client = duraluminClientFactory.BuildClient();
+        var builtKey = $"executionFlow-{executionFlowKey}-event-{storageEvent}-content-{Guid.NewGuid()}";
 
         var storeRequest = new StoreDocumentRequest()
         {
             Bucket = ApplicationConfiguration.DuraluminBucket,
-            FileKey = key,
+            FileKey = builtKey,
             Bytes = content
         };
 
@@ -31,11 +32,12 @@ public class DuraluminRepository : IContentRepository
         {
             await client.StoreAsync(storeRequest);
 
-            logger.LogInformation($"{LogTags.ContentStorageSuccess} Storing document with key: {key} in bucket: {ApplicationConfiguration.DuraluminBucket}");
+            logger.LogInformation($"{LogTags.ContentStorageSuccess} Storing document with key: {builtKey} in bucket: {ApplicationConfiguration.DuraluminBucket}");
+            return builtKey;
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, $"{LogTags.ContentStorageFailure} Failed to store document with key: {key} in bucket: {ApplicationConfiguration.DuraluminBucket}");
+            logger.LogError(ex, $"{LogTags.ContentStorageFailure} Failed to store document with key: {builtKey} in bucket: {ApplicationConfiguration.DuraluminBucket}");
             throw;
         }
     }

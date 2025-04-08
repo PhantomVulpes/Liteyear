@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Vulpes.Liteyear.Api.Attributes;
 using Vulpes.Liteyear.Api.Models;
 using Vulpes.Liteyear.Domain.Messaging;
+using Vulpes.Liteyear.Domain.Models;
 using Vulpes.Liteyear.Domain.Storage;
 
 namespace Vulpes.Liteyear.Api.Controllers;
@@ -20,12 +21,36 @@ public class PrimaryController : ControllerBase
     [HttpPost("execute")]
     public async Task<IActionResult> ExecuteWorkflow(BeginWorkflowRequest request)
     {
-        // Get the Duralumin bucket and key from the request.
-        // Move to Liteyear's bucket.
-        var input = await contentRepository.GetDocumentAsync(request.DuraluminBucket, request.DuraluminKey);
-        await contentRepository.StoreDocumentAsync(input, "ingest");
+        var executionFlowKey = Guid.NewGuid();
 
-        return Ok("Received request to execute workflow.");
+        var contentReferences = new List<ContentReference>();
+        foreach (var key in request.Keys)
+        {
+            var input = await contentRepository.GetDocumentAsync(request.DuraluminBucket, key);
+            var contentReferenceUri = await contentRepository.StoreDocumentAsync(input, executionFlowKey, "INGEST");
+
+            var contentReference = ContentReference.Default with
+            {
+                DuraluminKey = contentReferenceUri,
+                DataLabels = ["Ingest"],
+            };
+
+            contentReferences.Add(contentReference);
+        }
+
+        var executionFlow = ExecutionFlow.Default with
+        {
+            Key = executionFlowKey,
+            WorkflowSteps = request.Workflow,
+            Results = [WorkflowResult.Default with
+            {
+                Resource = Resource.Default with { ContentReferences = contentReferences },
+                Status = WorkflowResultStatus.Success,
+                Initiator = WorkflowStep.Default with { TargetModule = "Ingest Event" },
+            }]
+        };
+
+        return Ok(executionFlow.Key.ToString());
     }
 
     record TestMessage(string Value) : LiteyearMessage;

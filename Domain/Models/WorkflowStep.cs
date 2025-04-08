@@ -8,4 +8,5 @@ public record WorkflowStep : AggregateRoot
     public static WorkflowStep Default => Empty;
 
     public string TargetModule { get; init; } = string.Empty;
+    public string Arguments { get; init; } = string.Empty;
 }
